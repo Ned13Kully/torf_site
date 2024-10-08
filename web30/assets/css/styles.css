@@ -46,7 +46,7 @@ body, html {
     margin-bottom: 1rem;
     text-transform: uppercase;
     position: relative; /* For pseudo-elements */
-    animation: glitch 1s linear infinite;
+    animation: glitch 2s linear infinite; /* Changed from 1s to 2s */
 }
 
 #intro-screen p {
@@ -96,40 +96,42 @@ body, html {
 }
 
 #intro-screen h1:before {
-    animation: glitch 1s linear infinite;
+    animation: glitch 2s linear infinite; /* Changed from 1s to 2s */
     color: #ff0000; /* Red glitch effect */
 }
 
 #intro-screen h1:after {
-    animation: glitch 2s linear infinite;
+    animation: glitch 4s linear infinite; /* Changed from 2s to 4s */
     color: #0000ff; /* Blue glitch effect */
 }
 
 /* Main Content Sections */
 #main-content {
-    background-color: #0a0a0a; /* Changed from #1f1f1f to a darker shade */
-    color: #e0e0e0; /* Light text */
+    background-color: #0a0a0a;
+    color: #e0e0e0;
 }
 
 section {
     padding: 4rem 2rem;
-    max-width: 1200px;
+    max-width: 800px; /* Reduced from 1200px for better readability */
     margin: 0 auto;
-    background-color: #1a1a1a; /* Changed from #2c2c2c to a darker shade */
+    background-color: #1a1a1a;
     border-bottom: 1px solid #333333;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
 
 section h2 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    color: #ffffff; /* Ensures headings stand out */
+    font-size: 2.5rem; /* Increased from 2rem */
+    margin-bottom: 1.5rem; /* Increased from 1rem */
+    color: #ffffff;
+    letter-spacing: 1px; /* Added for better readability */
 }
 
 section p, section ul {
-    font-size: 1rem;
-    line-height: 1.6;
-    color: #e0e0e0;
+    font-size: 1.1rem; /* Increased from 1rem */
+    line-height: 1.8; /* Increased from 1.6 */
+    color: #f0f0f0; /* Slightly brighter than #e0e0e0 */
+    margin-bottom: 1.5rem; /* Added to create space between paragraphs */
 }
 
 /* Services List */
@@ -140,14 +142,29 @@ section p, section ul {
 
 #services li {
     background-color: #262626;
-    margin-bottom: 0.5rem;
-    padding: 0.75rem 1rem;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
+    margin-bottom: 1.5rem; /* Increased from 0.75rem */
+    padding: 1.5rem; /* Increased from 1rem 1.25rem */
+    border-radius: 8px; /* Increased from 6px */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    font-size: 1.1rem; /* Increased from default */
 }
 
 #services li:hover {
     background-color: #333333;
+    transform: translateX(5px); /* Added slight movement on hover */
+}
+
+#services h3 {
+    color: #00ffff; /* Cyan color for service titles */
+    font-size: 1.3rem;
+    margin-bottom: 0.75rem;
+}
+
+#services p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #e0e0e0;
+    margin-bottom: 0;
 }
 
 /* Supported Platforms Section */
@@ -156,7 +173,7 @@ section p, section ul {
     padding: 0;
     display: flex;
     justify-content: center;
-    gap: 2rem;
+    gap: 3rem; /* Increased from 2rem */
 }
 
 .platform-item {
@@ -169,9 +186,9 @@ section p, section ul {
 .platform-item::before {
     content: '';
     display: block;
-    width: 32px; /* Reduced size by 50% */
-    height: 32px; /* Reduced size by 50% */
-    margin: 0 auto;
+    width: 48px; /* Increased from 32px */
+    height: 48px; /* Increased from 32px */
+    margin: 0 auto 1rem; /* Added bottom margin */
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -191,9 +208,10 @@ section p, section ul {
 
 .platform-name {
     display: block;
-    margin-top: 0.5rem;
+    margin-top: 0.75rem; /* Increased from 0.5rem */
     font-weight: bold;
-    color: #ffffff; /* Light text */
+    color: #ffffff;
+    font-size: 1.1rem; /* Increased from default */
 }
 
 /* Header Styles */
@@ -259,5 +277,60 @@ header {
 }
 
 .header-content h1, .header-content p, section h2 {
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Increased shadow */
+}
+
+/* New styles for better text visibility and usability */
+section {
+    position: relative;
+    overflow: hidden;
+}
+
+section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #ff00ff, #00ffff);
+    opacity: 0.7;
+}
+
+section:nth-child(even)::before {
+    background: linear-gradient(90deg, #00ffff, #ff00ff);
+}
+
+section h2::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 3px;
+    background-color: #ff00ff;
+    margin-top: 10px;
+}
+
+section:nth-child(even) h2::after {
+    background-color: #00ffff;
+}
+
+/* Improve link visibility */
+a {
+    color: #00ffff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #ff00ff;
+    text-decoration: underline;
+}
+
+/* Add subtle animation to paragraphs */
+section p {
+    transition: transform 0.3s ease;
+}
+
+section p:hover {
+    transform: translateX(5px);
 }
