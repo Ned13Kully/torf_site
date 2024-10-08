@@ -47,6 +47,11 @@ body, html {
     text-transform: uppercase;
     position: relative; /* For pseudo-elements */
     animation: glitch 2s linear infinite; /* Changed from 1s to 2s */
+    color: #ffffff; /* Base color */
+    text-shadow:
+        -2px 0 #ff00ff, /* Magenta shadow to the left */
+        2px 0 #00ffff;  /* Cyan shadow to the right */
+    letter-spacing: 2px; /* Increased letter spacing for better effect visibility */
 }
 
 #intro-screen p {
@@ -73,36 +78,62 @@ body, html {
 @keyframes glitch {
     2%, 64% {
         transform: translate(2px,-2px);
+        text-shadow:
+            -2.5px 0 #ff00ff,
+            2.5px 0 #00ffff;
     }
     4%, 60% {
         transform: translate(-2px,2px);
+        text-shadow:
+            -1.5px 0 #ff00ff,
+            1.5px 0 #00ffff;
     }
     62% {
         transform: translate(0,0) skew(5deg); 
+        text-shadow:
+            -2px 0 #ff00ff,
+            2px 0 #00ffff;
     }
 }
 
 #intro-screen h1:before,
 #intro-screen h1:after {
-    content: attr(title);
+    content: attr(data-text); /* Use data-text attribute instead of title */
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     background: inherit;
-    overflow: hidden;
     clip: rect(0, 900px, 0, 0);
 }
 
 #intro-screen h1:before {
-    animation: glitch 2s linear infinite; /* Changed from 1s to 2s */
-    color: #ff0000; /* Red glitch effect */
+    left: 2px;
+    text-shadow: 1px 0 #ff00ff;
+    animation: glitch-2 3s infinite linear alternate-reverse;
 }
 
 #intro-screen h1:after {
-    animation: glitch 4s linear infinite; /* Changed from 2s to 4s */
-    color: #0000ff; /* Blue glitch effect */
+    left: -2px;
+    text-shadow: -1px 0 #00ffff;
+    animation: glitch-2 2s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-2 {
+    0% {
+        clip: rect(44px, 9999px, 56px, 0);
+    }
+    5% {
+        clip: rect(54px, 9999px, 33px, 0);
+    }
+    10% {
+        clip: rect(9px, 9999px, 78px, 0);
+    }
+    /* Add more keyframes as needed */
+    100% {
+        clip: rect(67px, 9999px, 11px, 0);
+    }
 }
 
 /* Main Content Sections */
@@ -333,4 +364,24 @@ section p {
 
 section p:hover {
     transform: translateX(5px);
+}
+
+/* Contact Us Section */
+#contact {
+    text-align: center;
+}
+
+#contact p {
+    font-size: 1.2rem;
+}
+
+#contact a {
+    color: #00ffff; /* Cyan color to match the theme */
+    text-decoration: none;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+#contact a:hover {
+    color: #ff00ff; /* Magenta color on hover */
+    text-shadow: 0 0 5px rgba(255, 0, 255, 0.5);
 }
