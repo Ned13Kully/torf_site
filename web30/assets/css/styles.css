@@ -1,0 +1,263 @@
+/* assets/css/styles.css */
+
+/* General Styles */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Courier New', monospace;
+    background-color: #000000; /* Changed from #121212 to near-black */
+    color: #e0e0e0; /* Light text color for readability */
+}
+
+/* Hidden Class */
+.hidden {
+    display: none;
+}
+
+#main-content {
+    display: block;
+}
+
+/* Intro Screen Styles */
+#intro-screen {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #0a0a0a; /* Changed from #1f1f1f to a darker shade */
+    color: #e0e0e0; /* Light text */
+    text-align: center;
+    z-index: 1000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    transition: opacity 0.5s ease; /* For fade-out effect */
+}
+
+#intro-screen.fade-out {
+    opacity: 0;
+}
+
+#intro-screen h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    position: relative; /* For pseudo-elements */
+    animation: glitch 1s linear infinite;
+}
+
+#intro-screen p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+#start-button {
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    background-color: transparent;
+    color: #e0e0e0;
+    border: 2px solid #e0e0e0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#start-button:hover {
+    background-color: #e0e0e0;
+    color: #000000;
+}
+
+/* Glitch Animations */
+@keyframes glitch {
+    2%, 64% {
+        transform: translate(2px,-2px);
+    }
+    4%, 60% {
+        transform: translate(-2px,2px);
+    }
+    62% {
+        transform: translate(0,0) skew(5deg); 
+    }
+}
+
+#intro-screen h1:before,
+#intro-screen h1:after {
+    content: attr(title);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    overflow: hidden;
+    clip: rect(0, 900px, 0, 0);
+}
+
+#intro-screen h1:before {
+    animation: glitch 1s linear infinite;
+    color: #ff0000; /* Red glitch effect */
+}
+
+#intro-screen h1:after {
+    animation: glitch 2s linear infinite;
+    color: #0000ff; /* Blue glitch effect */
+}
+
+/* Main Content Sections */
+#main-content {
+    background-color: #0a0a0a; /* Changed from #1f1f1f to a darker shade */
+    color: #e0e0e0; /* Light text */
+}
+
+section {
+    padding: 4rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: #1a1a1a; /* Changed from #2c2c2c to a darker shade */
+    border-bottom: 1px solid #333333;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+section h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #ffffff; /* Ensures headings stand out */
+}
+
+section p, section ul {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #e0e0e0;
+}
+
+/* Services List */
+#services ul {
+    list-style: none;
+    padding: 0;
+}
+
+#services li {
+    background-color: #262626;
+    margin-bottom: 0.5rem;
+    padding: 0.75rem 1rem;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+#services li:hover {
+    background-color: #333333;
+}
+
+/* Supported Platforms Section */
+#supported-platforms ul.platform-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.platform-item {
+    text-align: center;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.platform-item::before {
+    content: '';
+    display: block;
+    width: 32px; /* Reduced size by 50% */
+    height: 32px; /* Reduced size by 50% */
+    margin: 0 auto;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.platform-item.ps5::before {
+    background-image: url('path/to/ps5-icon.png');
+}
+
+.platform-item.xbox::before {
+    background-image: url('path/to/xbox-icon.png');
+}
+
+.platform-item.switch::before {
+    background-image: url('path/to/switch-icon.png');
+}
+
+.platform-name {
+    display: block;
+    margin-top: 0.5rem;
+    font-weight: bold;
+    color: #ffffff; /* Light text */
+}
+
+/* Header Styles */
+header {
+    position: relative;
+    height: 50vh; /* Reduced from 100vh to 50vh */
+    overflow: hidden;
+}
+
+#headerCanvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0; /* Behind the header content */
+}
+
+.header-content {
+    position: relative;
+    z-index: 1; /* In front of the canvas */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    color: #ffffff; /* Light text */
+    text-align: center;
+    padding: 0 2rem;
+}
+
+.header-content h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+}
+
+.header-content p {
+    font-size: 1.5rem;
+}
+
+/* Footer Styles */
+/* ... your existing footer styles ... */
+
+/* Fade-Out Animation */
+.fade-out {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+/* Additional Enhancements */
+.header-content {
+    will-change: transform, opacity; /* Optimizes rendering */
+}
+
+#start-button:focus {
+    outline: 3px dashed #e0e0e0;
+    outline-offset: 2px;
+}
+
+.platform-item:hover {
+    transform: translateY(-5px);
+}
+
+.header-content h1, .header-content p, section h2 {
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+}
